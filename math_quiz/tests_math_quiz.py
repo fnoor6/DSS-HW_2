@@ -12,13 +12,17 @@ class TestMathGame(unittest.TestCase):
             self.assertTrue(min_val <= rand_num <= max_val)
 
     def test_generate_random_operator(self):
-        # TODO
-        pass
+        # Test if the random operator is one of the expected operators
+        operators = ['+', '-', '*']
+        for _ in range(1000):  # Test a large number of random operators
+            rand_operator = generate_random_operator()
+            self.assertIn(rand_operator, operators)
 
     def test_generate_problem_and_answer(self):
         test_cases = [
             (5, 2, '+', '5 + 2', 7),
-            # Add more test cases here
+            (10, 3, '-', '10 - 3', 7),
+            (6, 4, '*', '6 * 4', 24),
         ]
 
         for num1, num2, operator, expected_problem, expected_answer in test_cases:
@@ -28,3 +32,4 @@ class TestMathGame(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
